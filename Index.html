@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Générer un fichier TXT</title>
+  
+  <!-- HTML -->
+  
+
+  <!-- Custom Styles -->
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <!-- Project -->
+  <section>
+    <h1>Créer votre ficher TXT en ligne </h1>
+    <input type="text" placeholder="Nom du fichier" id="nom-fichier"> 
+    <textarea placeholder="Écrivez votre texte ici..." id="text" cols="50" rows="9"></textarea>
+    <button>Telecharger le Fichier Txt</button>
+  </section>
+  
+  <script>
+    function telecharger(){
+      Var text = document.getElementById('text').value;//pr récup le te texte dans le texterea
+      Var nom_fichier = document.getElementById('nom_fichier').value;//pr récup le nom du fichier
+      download(text, nom_fichier)
+    } 
+    //créer la function download
+    function download(text, nom_fichier){
+      var element = document.createElement('a');
+      element.setAttribute('href', 'data:text/plain;charset=utf-8' + encodeURIComponent(text));
+      element.setAttribute('download', nom_fichier);
+      element.style.display='none';
+      document.body.appendChild(element)
+      element.click()
+      document.body.removeChild(element)
+    } 
+  </script>
+</body>
+</html>
